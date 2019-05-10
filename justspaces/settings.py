@@ -17,7 +17,11 @@ import dj_database_url
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'foobarbaz')
 DEBUG = os.getenv('DEBUG', True)
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', [])
+
+if not os.getenv('ALLOWED_HOSTS', None):
+    ALLOWED_HOSTS = []
+else:
+    ALLOWED_HOSTS = [host for host in os.getenv('ALLOWED_HOSTS', '').split(',')]
 
 DATABASES = {
     'default': dj_database_url.config(conn_max_age=600)
