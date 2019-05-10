@@ -5,8 +5,8 @@
 build:
   docker:
     django: Dockerfile
-# release:
-#   command:
-#     - ./bin/migrate
+release:
+  command:
+    - ./bin/migrate
 run:
   django: /usr/local/bin/gunicorn -b :8000 --reload --access-logfile=- --error-logfile=- --log-level=debug justspaces.wsgi
