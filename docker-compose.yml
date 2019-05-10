@@ -17,8 +17,8 @@ services:
     working_dir: /usr/local/src
     depends_on:
       - database
-    entrypoint: python
     command:
+      - python
       - manage.py
       - runserver
       - 0.0.0.0:8000

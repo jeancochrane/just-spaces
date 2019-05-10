@@ -5,7 +5,7 @@ WORKDIR /usr/local/src
 
 COPY requirements.txt /usr/local/src/
 
- RUN set -ex \
+RUN set -ex \
 	&& buildDeps=" \
 		build-essential \
 	" \
@@ -18,6 +18,6 @@ COPY requirements.txt /usr/local/src/
 	&& apt-get purge -y --auto-remove $buildDeps \
 	&& rm  -Rf /var/lib/apt/lists/*
 
- COPY . /usr/local/src
+COPY . /usr/local/src
 
-ENTRYPOINT ["/usr/local/bin/gunicorn"]
+ENTRYPOINT []
