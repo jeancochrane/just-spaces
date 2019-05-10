@@ -11,6 +11,7 @@ COPY requirements.txt /usr/local/src/
 	" \
 	&& deps=" \
 		git \
+		curl \
 	" \
 	&& apt-get update && apt-get install -y $deps $buildDeps --no-install-recommends \
 	&& pip install -U -r requirements.txt \
