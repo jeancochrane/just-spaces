@@ -1,0 +1,19 @@
+{
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "description": "Sample deployment of Just Spaces on Heroku.",
+  "env": {
+  },
+  "formation": {
+  },
+  "name": "just-spaces",
+  "scripts": {
+  },
+  "stack": "heroku-18"
+}
