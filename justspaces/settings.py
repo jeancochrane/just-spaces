@@ -26,6 +26,8 @@ else:
 DATABASES = {
     'default': dj_database_url.config(conn_max_age=600)
 }
+# Enable PostGIS on Heroku (see: https://stackoverflow.com/a/21317596)
+DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
