@@ -7,8 +7,7 @@ setup:
 release:
   image: web
   command:
-    - python manage.py collectstatic --noinput
-    - python manage.py migrate --noinput
+    - ./bin/release
 build:
   docker:
     web: Dockerfile
