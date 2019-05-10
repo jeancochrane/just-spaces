@@ -3,7 +3,7 @@ setup:
    - plan: heroku-postgresql
      as: DATABASE
   config:
-    ALLOWED_HOSTS: "*.herokuapp.com"
+    ALLOWED_HOSTS: ".herokuapp.com"
 build:
   docker:
     web: Dockerfile
