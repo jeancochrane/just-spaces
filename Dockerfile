@@ -20,4 +20,6 @@ RUN set -ex \
 
 COPY . /usr/local/src
 
+RUN python manage.py collectstatic --noinput
+
 ENTRYPOINT []

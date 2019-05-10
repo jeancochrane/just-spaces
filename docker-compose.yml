@@ -18,15 +18,19 @@ services:
     depends_on:
       - database
     command:
-      - python
-      - manage.py
-      - runserver
-      - 0.0.0.0:8000
+      - /usr/local/bin/gunicorn
+      - -b=:8000
+      - --reload
+      - --access-logfile=-
+      - --error-logfile=-
+      - --log-level=debug
+      - justspaces.wsgi
     ports:
       - 8000:8000
     environment:
       - DATABASE_URL=postgis://postgres@database:5432/just-spaces
       - DEBUG=True
+      - ALLOWED_HOSTS=localhost
 
   database:
     image: quay.io/azavea/postgis:2.4-postgres10.3-slim
