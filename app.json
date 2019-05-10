@@ -14,6 +14,7 @@
   },
   "name": "just-spaces",
   "scripts": {
+    "postdeploy": "scripts/postdeploy.sh" 
   },
   "stack": "heroku-18"
 }
