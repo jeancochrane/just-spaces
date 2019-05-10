@@ -7,7 +7,7 @@ build:
     django: Dockerfile
 release:
   command:
-    - python manage.py migrate
+    - "python manage.py migrate"
   image: django
 run:
   django: /usr/local/bin/gunicorn -b :8000 --reload --access-logfile=- --error-logfile=- --log-level=debug justspaces.wsgi
