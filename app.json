@@ -14,7 +14,14 @@
   },
   "name": "just-spaces",
   "scripts": {
-    "postdeploy": "scripts/postdeploy.sh" 
+    "postdeploy": "scripts/postdeploy.sh"
   },
-  "stack": "heroku-18"
+  "stack": "heroku-18",
+  "environments": {
+    "test": {
+      "scripts": {
+        "test": "pytest"
+      }
+    }
+  }
 }
