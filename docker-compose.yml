@@ -25,7 +25,7 @@ services:
     ports:
       - 8000:8000
     environment:
-      - DBHOST=database
+      - DATABASE_URL=postgis://postgres@database:5432/just-spaces
 
   database:
     image: quay.io/azavea/postgis:2.4-postgres10.3-slim

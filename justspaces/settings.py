@@ -13,19 +13,14 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 import gettext
 
+import dj_database_url
+
 SECRET_KEY = os.getenv('SECRET_KEY', 'foobarbaz')
 DEBUG = os.getenv('DEBUG', True)
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', [])
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': os.getenv('DBNAME', 'just-spaces'),
-        'USER': os.getenv('DBUSER', 'postgres'),
-        'PASSWORD': os.getenv('DBPASSWORD', ''),
-        'HOST': os.getenv('DBHOST', 'localhost'),
-        'PORT': os.getenv('DBPORT', '5432'),
-    }
+    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
 }
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)

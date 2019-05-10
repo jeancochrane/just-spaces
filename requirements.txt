@@ -10,3 +10,4 @@ pytest-mock==1.10.2
 -e git+https://github.com/datamade/django-fobi.git#egg=django-fobi
 
 django-crispy-forms==1.7.2
+dj-database-url==0.5.0
