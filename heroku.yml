@@ -6,4 +6,4 @@ build:
   docker:
     django: Dockerfile
 run:
-  django: "/usr/local/bin/gunicorn -b :8000 --reload --access-logfile=- --error-logfile=- --log-level=debug justspaces.wsgi"
+  django: "echo hello world"
