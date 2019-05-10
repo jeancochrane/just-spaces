@@ -20,7 +20,7 @@ if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
         ./bin/init_db
 
         # Run Django tests.
-        docker-compose run --rm django pytest tests 
+        docker-compose run --rm django pytest tests
 
         # Run frontend tests.
         docker-compose run --rm frontend test
