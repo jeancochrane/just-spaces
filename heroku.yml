@@ -6,4 +6,4 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: "/usr/local/bin/gunicorn -b :8000 --reload --access-logfile=- --error-logfile=- --log-level=debug justspaces.wsgi"
+  web: "/usr/local/bin/gunicorn -b :$PORT --reload --access-logfile=- --error-logfile=- --log-level=debug justspaces.wsgi"
