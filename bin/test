@@ -17,16 +17,15 @@ if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
     if [ "${1:-}" = "--help" ]; then
         usage
     else
-        echo "hello, world!"
-        # ./bin/init_db
+        ./bin/init_db
 
         # Run Django tests.
-        # docker-compose run --rm django pytest "$@"
+        docker-compose run --rm django pytest tests 
 
         # Run frontend tests.
-        # docker-compose run --rm frontend test
+        docker-compose run --rm frontend test
 
         # Run frontend linters.
-        # docker-compose run --rm frontend lint
+        docker-compose run --rm frontend lint
     fi
 fi
