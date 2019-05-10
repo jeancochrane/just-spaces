@@ -16,7 +16,10 @@ import gettext
 import dj_database_url
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'foobarbaz')
-DEBUG = os.getenv('DEBUG', True)
+
+DEBUG = False
+if os.environ.get('DEBUG') and os.environ.get('DEBUG').lower() == 'true':
+    DEBUG = True
 
 if not os.getenv('ALLOWED_HOSTS', None):
     ALLOWED_HOSTS = []
