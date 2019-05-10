@@ -8,4 +8,4 @@ build:
 #   command:
 #     - ./bin/migrate
 run:
-  docker: /usr/local/bin/gunicorn -b :8000 --reload --access-logfile=- --error-logfile=- --log-level=debug justspaces.wsgi
+  django: /usr/local/bin/gunicorn -b :8000 --reload --access-logfile=- --error-logfile=- --log-level=debug justspaces.wsgi
