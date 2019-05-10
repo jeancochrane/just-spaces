@@ -6,4 +6,4 @@ build:
   docker:
     django: Dockerfile
 run:
-  django: "echo hello world"
+  django: ./bin/run
