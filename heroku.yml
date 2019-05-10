@@ -4,6 +4,7 @@ setup:
      as: DATABASE
   config:
     ALLOWED_HOSTS: ".herokuapp.com"
+    DEBUG: False
 release:
   image: web
   command:
