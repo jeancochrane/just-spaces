@@ -16,7 +16,7 @@
   "scripts": {
     "postdeploy": "bin/postdeploy"
   },
-  "stack": "heroku-18",
+  "stack": "container",
   "environments": {
     "test": {
       "scripts": {
