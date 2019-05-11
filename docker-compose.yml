@@ -9,8 +9,40 @@ services:
     entrypoint: yarn
     # 'start' is a custom Node.js script defined in frontend/package.json.
     command: start
+
+  django:
+    build: .
+    volumes:
+      - ./:/usr/local/src
+    working_dir: /usr/local/src
+    depends_on:
+      - database
+    command:
+      - /usr/local/bin/gunicorn
+      - -b=:8000
+      - --reload
+      - --access-logfile=-
+      - --error-logfile=-
+      - --log-level=debug
+      - justspaces.wsgi
+    ports:
+      - 8000:8000
+    environment:
+      - DATABASE_URL=postgis://postgres@database:5432/just-spaces
+      - DEBUG=True
+      - ALLOWED_HOSTS=localhost
+
+  database:
+    image: quay.io/azavea/postgis:2.4-postgres10.3-slim
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=
+      - POSTGRES_DB=just-spaces
 volumes:
   # Making node_modules a named volume prevents the ./frontend volume mount from
   # clobbering the node_modules directory in the container. Since the volume only
   # has to be named, it doesn't require any configuration directives.
   node_modules:
+  dbdata:

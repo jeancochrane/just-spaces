@@ -11,12 +11,29 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-from .local_settings import SECRET_KEY, DEBUG, ALLOWED_HOSTS, DATABASES
 import gettext
+
+import dj_database_url
+
+SECRET_KEY = os.getenv('SECRET_KEY', 'foobarbaz')
+
+DEBUG = False
+if os.environ.get('DEBUG') and os.environ.get('DEBUG').lower() == 'true':
+    DEBUG = True
+
+if not os.getenv('ALLOWED_HOSTS', None):
+    ALLOWED_HOSTS = []
+else:
+    ALLOWED_HOSTS = [host for host in os.getenv('ALLOWED_HOSTS', '').split(',')]
+
+DATABASES = {
+    'default': dj_database_url.config(conn_max_age=600)
+}
+# Enable PostGIS on Heroku (see: https://stackoverflow.com/a/21317596)
+DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -96,6 +113,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

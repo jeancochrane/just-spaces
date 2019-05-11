@@ -1,6 +1,12 @@
 {
   "addons": [
-
+    {
+      "plan": "heroku-postgresql",
+      "as": "DATABASE",
+      "options": {
+        "version": "11"
+      }
+    }
   ],
   "buildpacks": [
     {
@@ -15,5 +21,12 @@
   "name": "just-spaces",
   "scripts": {
   },
-  "stack": "heroku-18"
+  "stack": "container",
+  "environments": {
+    "test": {
+      "scripts": {
+        "test": "bin/test"
+      }
+    }
+  }
 }
