@@ -14,7 +14,7 @@ RUN set -ex \
 		curl \
 	" \
 	&& apt-get update && apt-get install -y $deps $buildDeps --no-install-recommends \
-	&& pip install -U -r requirements.txt \
+	&& pip install --src /opt/pypi -U -r requirements.txt \
 	&& apt-get purge -y --auto-remove $buildDeps \
 	&& rm  -Rf /var/lib/apt/lists/*
 
