@@ -15,6 +15,12 @@
   ],
   "description": "Sample deployment of Just Spaces on Heroku.",
   "env": {
+    "ALLOWED_HOSTS": {
+      "required": true
+    },
+    "DEBUG": {
+      "required": true
+    }
   },
   "formation": {
   },
